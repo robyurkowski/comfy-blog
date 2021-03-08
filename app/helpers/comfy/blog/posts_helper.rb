@@ -1,9 +1,11 @@
 # frozen_string_literal: true
 
 module Comfy::Blog::PostsHelper
-  def post_published_time(post = nil, format: :short)
+  def post_published_time(args = { format: :mdy })
+    post, format = args.symbolize_keys
+      .values_at(:post, :format)
     post ||= @cms_post
-    post.published_at.to_formatted_s(format)
+    l post.published_at, format: format.to_sym
   end
 
   def post_link(post)

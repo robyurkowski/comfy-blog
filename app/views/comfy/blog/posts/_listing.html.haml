@@ -1,8 +1,10 @@
 - @blog_posts.each do |post|
   %article{ id: dom_id(post) }
-    %h2
-      = post_link post
-    .date
-      = post_published_time(post, format: :db)
+    %h2= post_link post
+
+    -# 
+      This makes use of `I18n.localize`, so customize your date formatting by
+      adding formats under `<locale>.time.formats.my_format`.
+    .date= post_published_time(post: post, format: :db)
 
 = comfy_paginate @blog_posts

@@ -1,0 +1,2 @@
+- Comfy::Cms::Category.of_type('Comfy::Blog::Post').all.each do |tag|
+  = link_to tag.label, category: tag.label
